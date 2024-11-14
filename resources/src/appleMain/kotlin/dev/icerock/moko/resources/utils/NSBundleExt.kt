@@ -11,6 +11,9 @@ import platform.Foundation.NSURL
 import platform.Foundation.pathExtension
 
 fun NSBundle.Companion.loadableBundle(identifier: String): NSBundle {
+
+    bundleWithIdentifier(identifier = identifier)?.let { return it }
+
     val bundlePath: String = NSBundle.mainBundle.bundlePath
     val enumerator: NSDirectoryEnumerator = requireNotNull(NSFileManager.defaultManager.enumeratorAtPath(bundlePath))
     while (true) {
